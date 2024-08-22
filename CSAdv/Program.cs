@@ -56,6 +56,26 @@ namespace CSAdv
                 testB = test;
             }
         }
+        class PointClass
+        {
+            public int x;
+            public int y;
+            public PointClass(int x, int y)
+            {
+                this.x = x;
+                this.y = y;
+            }
+        }
+        struct PointStruct
+        {
+            public int x;
+            public int y;
+            public PointStruct(int x, int y)
+            {
+                this.x = x;
+                this.y = y;
+            }
+        }
         static void NextPosition(int x, int y, int vx, int vy, out int rx, out int ry)
         {
             rx = x + vx;
@@ -96,6 +116,22 @@ namespace CSAdv
             Console.WriteLine("현재 좌표 : (" + x + ", " + y + ")");
             NextPosition(x, y, vx, vy, out x, out y);
             Console.WriteLine("현재 좌표 : (" + x + ", " + y + ")");
+
+            PointClass pCA = new PointClass(10, 20);
+            PointClass pCB = pCA; // 참조 복사, pCA와 pCB 동일 객체를 바라본다.
+            pCB.x = 100;
+            pCB.y = 100;
+            Console.WriteLine("pCA: {0}, {1}", pCA.x, pCA.y); // pCA: 100, 100
+            Console.WriteLine("pCB: {0}, {1}", pCB.x, pCB.y); // pCB: 100, 100
+            Console.WriteLine();
+
+            PointStruct pSA = new PointStruct(10, 20);
+            PointStruct pSB = pSA; // 값 복사. pSA와 pSB는 별개의 변수
+            pSB.x = 100;
+            pSB.y = 100;
+            Console.WriteLine("pSA: {0}, {1}", pSA.x, pSA.y); // pSA: 10, 20
+            Console.WriteLine("pSB: {0}, {1}", pSB.x, pSB.y); // pSB: 100, 100
+            Console.WriteLine();
         }
     }
 }
